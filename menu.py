@@ -43,3 +43,11 @@ class Menu:
     @staticmethod
     def money2():
         print ('Enter name of operation:')
+
+    @staticmethod
+    def success(message):
+        print (message + '\n')
+
+    @staticmethod
+    def error(message):
+        print('[ERROR]: ' + message + '\n')
