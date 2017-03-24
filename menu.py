@@ -23,8 +23,23 @@ class Menu:
     def wallet_menu():
         print ('Work with wallet:')
         print ('1)Check balance')
-        print ('2)')
-        print ('3)')
+        print ('2)Top up the balance')
+        print ('3)Withdraw money')
         print ('4)History')
         print ('5)Back to main menu')
         print ('6)Exit')
+
+    @staticmethod
+    def currency():
+        print ('Choose the currency:')
+        print ('1)UAH')
+        print ('2)USD')
+        print ('3)EUR')
+
+    @staticmethod
+    def money1():
+        print ('Enter amount of money:')
+
+    @staticmethod
+    def money2():
+        print ('Enter name of operation:')
