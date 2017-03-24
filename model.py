@@ -16,3 +16,9 @@ class Model:
         line=file.readline()
         print(line[1])
 
+    def plus(self,money,op_name):
+        file = open('wallet.txt', 'wr')
+        file.write(money)
+        file.write(op_name)
+
+
