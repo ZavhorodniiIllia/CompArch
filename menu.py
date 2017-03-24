@@ -21,7 +21,7 @@ class Menu:
 
     @staticmethod
     def wallet_menu():
-        print ('Work with wallet:')
+        print ('Operations with wallet:')
         print ('1)Check balance')
         print ('2)Top up the balance')
         print ('3)Withdraw money')
