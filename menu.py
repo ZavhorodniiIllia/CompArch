@@ -7,17 +7,6 @@ class Menu:
         print ('2)Create new wallet')
         print ('3)Exit')
 
-    @staticmethod
-    def open_menu():
-        print ('Choose the wallet:')
-
-    @staticmethod
-    def create_menu():
-        print ('Enter wallet`s name:')
-
-    @staticmethod
-    def balance_menu():
-        print ('Enter your balance(in UAH):')
 
     @staticmethod
     def wallet_menu():
@@ -40,14 +29,6 @@ class Menu:
         print ('2)USD')
         print ('3)EUR')
         print ('4)Back')
-
-    @staticmethod
-    def money1():
-        print ('Enter amount of money:')
-
-    @staticmethod
-    def money2():
-        print ('Enter name of operation:')
 
     @staticmethod
     def success(message):

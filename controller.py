@@ -25,9 +25,9 @@ class Controller():
 
         input('Press Enter')
 
-        Menu.money1()
+        money= float(input('Enter amount of money:'))
 
-        Menu.money2()
+        op_name=str(input('Enter name of operation:'))
 
     def plus_money(self):
         choise = -1
@@ -47,11 +47,9 @@ class Controller():
 
         input('Press Enter')
 
-        Menu.money1()
+        money = float(input('Enter amount of money:'))
 
-        Menu.money2()
-
-
+        op_name = str(input('Enter name of operation:'))
 
     def ch_balance(self):
         Menu.balance()
@@ -83,14 +81,14 @@ class Controller():
         input ('Press Enter')
 
     def ex_wallet(self):
-        Menu.open_menu()
 
+        name=str(input('Choose the wallet:'))
         self.wallet()
 
     def new_wallet(self):
-        Menu.create_menu()
+        name = str(input('Enter wallet`s name:'))
 
-        Menu.balance_menu()
+        balance=float(input('Enter your balance(in UAH):'))
 
         self.wallet()
 
