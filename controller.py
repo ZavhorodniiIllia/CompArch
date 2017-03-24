@@ -3,6 +3,59 @@ from model import Model
 
 class Controller():
 
+    def history(self):
+
+
+    def minus_money(self):
+        choise = -1
+        while choise != 4:
+            Menu.currency()
+            try:
+                choise = int(input('Enter menu item:'))
+            except ValueError:
+                Menu.error('Incorrect value')
+
+            if choise == 1:
+
+
+            elif choise == 2:
+
+
+            elif choise == 3:
+
+        input('Press Enter')
+
+        Menu.money1()
+
+        Menu.money2()
+
+    def plus_money(self):
+        choise = -1
+        while choise != 4:
+            Menu.currency()
+            try:
+                choise = int(input('Enter menu item:'))
+            except ValueError:
+                Menu.error('Incorrect value')
+
+            if choise == 1:
+
+
+            elif choise == 2:
+
+            elif choise == 3:
+
+        input('Press Enter')
+
+        Menu.money1()
+
+        Menu.money2()
+
+
+
+    def ch_balance(self):
+        Menu.balance()
+
     def wallet(self):
         choise = -1
         while choise !=6:
@@ -13,18 +66,18 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-                self.
+                self.ch_balance()
 
             elif choise == 2:
-                self.
+                self.plus_money()
 
-            if choise == 3:
-                self.
+            elif choise == 3:
+                self.minus_money()
 
             elif choise == 4:
-                self.
+                self.history()
 
-            if choise == 5:
+            elif choise == 5:
                 self.main()
 
         input ('Press Enter')
@@ -32,10 +85,14 @@ class Controller():
     def ex_wallet(self):
         Menu.open_menu()
 
+        self.wallet()
+
     def new_wallet(self):
         Menu.create_menu()
 
         Menu.balance_menu()
+
+        self.wallet()
 
     def main(self):
         choise = -1

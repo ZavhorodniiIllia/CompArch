@@ -30,11 +30,16 @@ class Menu:
         print ('6)Exit')
 
     @staticmethod
+    def balance():
+        print ('Your balance:')
+
+    @staticmethod
     def currency():
         print ('Choose the currency:')
         print ('1)UAH')
         print ('2)USD')
         print ('3)EUR')
+        print ('4)Back')
 
     @staticmethod
     def money1():
