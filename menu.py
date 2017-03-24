@@ -16,5 +16,15 @@ class Menu:
         print ('Enter wallet`s name:')
 
     @staticmethod
-    def wallet_menu():
+    def balance_menu():
+        print ('Enter your balance(in UAH):')
 
+    @staticmethod
+    def wallet_menu():
+        print ('Work with wallet:')
+        print ('1)Check balance')
+        print ('2)')
+        print ('3)')
+        print ('4)History')
+        print ('5)Back to main menu')
+        print ('6)Exit')
