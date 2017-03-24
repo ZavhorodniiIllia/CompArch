@@ -3,6 +3,9 @@ from model import Model
 
 class Controller():
 
+    def __init__(self, data_base):
+        self.model = data_base
+
     def history(self):
 
 
@@ -87,9 +90,8 @@ class Controller():
 
     def new_wallet(self):
         name = str(input('Enter wallet`s name:'))
-
         balance=float(input('Enter your balance(in UAH):'))
-
+        self.model.new_wallet(name,balance)
         self.wallet()
 
     def main(self):

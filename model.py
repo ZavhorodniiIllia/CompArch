@@ -1,2 +1,18 @@
+
 class Model:
-    def new_wallet(self):
+    def __init__(self, name):
+        self.load(name)
+
+    def new_wallet(self, name, balance):
+        file=open('wallet.txt', 'r')
+        file.write(name)
+        file.write(balance)
+        file.close()
+    def load(self,name):
+        file=open('wallet.txt','wr')
+
+    def balance(self):
+        file = open('wallet.txt', 'wr')
+        line=file.readline()
+        print(line[1])
+
