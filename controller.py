@@ -21,14 +21,15 @@ class Controller():
 
             if choise == 1:
                 coof=1
+                break
             elif choise == 2:
                 coof=27
+                break
             elif choise == 3:
                 coof=29.5
-        input('Press Enter')
-
-        money= coof * float(input('Enter amount of money:'))
-        op_name=str(input('Enter name of operation:'))
+                break
+        money= coof * input('Enter amount of money:')
+        op_name= input('Enter name of operation:')
         self.model.minus(money,op_name)
 
     def plus_money(self):
@@ -43,18 +44,20 @@ class Controller():
 
             if choise == 1:
                 coof=1
+                break
             elif choise == 2:
                 coof=27
+                break
             elif choise == 3:
                 coof=29.5
-        input('Press Enter')
-
-        money = coof * float(input('Enter amount of money:'))
-        op_name = str(input('Enter name of operation:'))
+                break
+        money = coof * input('Enter amount of money:')
+        op_name = input('Enter name of operation:')
         self.model.plus(money,op_name)
 
     def ch_balance(self):
         Menu.balance()
+        self.model.balance()
 
     def wallet(self):
         choise = -1
@@ -88,10 +91,10 @@ class Controller():
         self.wallet()
 
     def new_wallet(self):
-        name = str(input('Enter wallet`s name:'))
-        balance=float(input('Enter your balance(in UAH):'))
+        name = input('Enter wallet`s name:')
+        balance= input('Enter your balance(in UAH):')
         self.model.new_wallet(name,balance)
-        self.wallet()
+        self.main()
 
     def main(self):
         choise = -1

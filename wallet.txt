@@ -1,0 +1,3 @@
+wallet
+500
+200:testing
