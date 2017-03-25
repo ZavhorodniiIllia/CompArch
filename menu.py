@@ -16,7 +16,6 @@ class Menu:
         print ('3)Withdraw money')
         print ('4)History')
         print ('5)Back to main menu')
-        print ('6)Exit')
 
     @staticmethod
     def balance():
