@@ -7,7 +7,7 @@ class Controller():
         self.model = data_base
 
     def history(self):
-
+        self.model.history()
 
     def minus_money(self):
         choise = -1
@@ -20,17 +20,15 @@ class Controller():
 
             if choise == 1:
 
-
             elif choise == 2:
-
 
             elif choise == 3:
 
         input('Press Enter')
 
         money= float(input('Enter amount of money:'))
-
         op_name=str(input('Enter name of operation:'))
+        self.model.minus(money,op_name)
 
     def plus_money(self):
         choise = -1
@@ -43,7 +41,6 @@ class Controller():
 
             if choise == 1:
 
-
             elif choise == 2:
 
             elif choise == 3:
@@ -51,8 +48,8 @@ class Controller():
         input('Press Enter')
 
         money = float(input('Enter amount of money:'))
-
         op_name = str(input('Enter name of operation:'))
+        self.model.plus(money,op_name)
 
     def ch_balance(self):
         Menu.balance()

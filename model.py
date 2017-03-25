@@ -18,7 +18,14 @@ class Model:
 
     def plus(self,money,op_name):
         file = open('wallet.txt', 'wr')
-        file.write(money)
-        file.write(op_name)
+        file.write(money + op_name)
+
+    def minus(self, money, op_name):
+        file = open('wallet.txt', 'wr')
+        file.write(money + op_name)
+
+    def history(self):
+        file = open('wallet.txt', 'wr')
+        file.read()
 
 
