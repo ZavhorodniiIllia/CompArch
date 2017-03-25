@@ -6,7 +6,7 @@ class Model:
     def new_wallet(self, name, balance):
         file=open('wallet.txt', 'w')
         file.write(name + '\n')
-        file.write(balance + '\n')
+        file.write(balance + ' (UAH)' + '\n')
         file.close()
 
     def load(self,name):
@@ -24,20 +24,41 @@ class Model:
         lines=len(line)
         return(line[lines-1])
 
-    def minus(self,money,op_name,balance):
+    def minus(self,money,op_name,balance,coof):
         file = open('wallet.txt', 'a')
-        file.write(str(money) +':'+ op_name + '\n')
+        if coof==1:
+            file.write('-' + str(money) + ' UAH' + ': ' + op_name + '\n')
+        elif coof==2:
+            file.write('-' + str(money)+' USD' +': '+ op_name + '\n')
+            money*=27
+        elif coof==3:
+            file.write('-' + str(money) + ' EUR' + ': ' + op_name + '\n')
+            money *= 29.5
         bm=balance-money
-        file.write(str(bm) + '\n')
+        file.write(str(bm)+' (UAH)' + '\n')
 
-    def plus(self,money,op_name,balance):
+    def plus(self,money,op_name,balance,coof):
         file = open('wallet.txt', 'a')
-        file.write(str(money) +':'+ op_name + '\n')
+        if coof==1:
+            file.write('-' + str(money) + ' UAH' + ': ' + op_name + '\n')
+        elif coof==2:
+            file.write('+' + str(money)+' USD' +': '+ op_name + '\n')
+            money*=27
+        elif coof==3:
+            file.write('+' + str(money) + ' EUR' + ': ' + op_name + '\n')
+            money *= 29.5
         bm=balance+money
-        file.write(str(bm) + '\n')
+        file.write(str(bm)+ ' (UAH)' + '\n')
 
     def history(self):
         file = open('wallet.txt', 'r')
         print(file.read())
 
-
+    def str_to_float(self,money):
+        mon=''
+        for i in money:
+            if i!=' ':
+                mon+=i
+            else:
+                break
+        return mon

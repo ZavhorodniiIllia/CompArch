@@ -21,17 +21,17 @@ class Controller():
                 coof=1
                 break
             elif choise == 2:
-                coof=27
+                coof=2
                 break
             elif choise == 3:
-                coof=29.5
+                coof=3
                 break
             elif choise==4:
                 self.wallet()
-        money= coof * float(input('Enter amount of money:'))
+        money=float(input('Enter amount of money:'))
         op_name= input('Enter name of operation:')
-        balance = float(self.model.chek())
-        self.model.minus(money, op_name,balance)
+        balance = float(self.model.str_to_float(self.model.chek()))
+        self.model.minus(money, op_name,balance,coof)
 
     def plus_money(self):
         print('\n')
@@ -48,17 +48,17 @@ class Controller():
                 coof=1
                 break
             elif choise == 2:
-                coof=27
+                coof=2
                 break
             elif choise == 3:
-                coof=29.5
+                coof=3
                 break
             elif choise == 4:
                 self.wallet()
-        money = coof * float(input('Enter amount of money:'))
+        money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
-        balance=float(self.model.chek())
-        self.model.plus(money,op_name,balance)
+        balance=float(self.model.str_to_float(self.model.chek()))
+        self.model.plus(money,op_name,balance,coof)
 
     def ch_balance(self):
         print('\n')
