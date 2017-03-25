@@ -1,4 +1,6 @@
-wallet
+wal
 600
-100.0:testing1
-486.0:testing2
+200.0:test
+800.0
+350.0:test2
+450.0

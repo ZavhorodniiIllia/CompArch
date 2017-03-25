@@ -8,6 +8,7 @@ class Model:
         file.write(name + '\n')
         file.write(balance + '\n')
         file.close()
+
     def load(self,name):
         file=open('wallet.txt','r')
 
@@ -16,13 +17,24 @@ class Model:
         line=file.readlines()
         print(line[1])
 
-    def plus(self,money,op_name):
-        file = open('wallet.txt', 'a')
-        file.write(str(money) +':'+ op_name + '\n')
+    def chek(self):
+        lines=0
+        file = open('wallet.txt', 'r')
+        line = file.readlines()
+        lines=len(line)
+        return(line[lines-1])
 
-    def minus(self, money, op_name):
+    def minus(self,money,op_name,balance):
         file = open('wallet.txt', 'a')
         file.write(str(money) +':'+ op_name + '\n')
+        bm=balance-money
+        file.write(str(bm) + '\n')
+
+    def plus(self,money,op_name,balance):
+        file = open('wallet.txt', 'a')
+        file.write(str(money) +':'+ op_name + '\n')
+        bm=balance+money
+        file.write(str(bm) + '\n')
 
     def history(self):
         file = open('wallet.txt', 'r')

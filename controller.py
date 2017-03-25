@@ -30,7 +30,8 @@ class Controller():
                 self.wallet()
         money= coof * float(input('Enter amount of money:'))
         op_name= input('Enter name of operation:')
-        self.model.minus(money,op_name)
+        balance = float(self.model.chek())
+        self.model.minus(money, op_name,balance)
 
     def plus_money(self):
         print('\n')
@@ -56,17 +57,19 @@ class Controller():
                 self.wallet()
         money = coof * float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
-        self.model.plus(money,op_name)
+        balance=float(self.model.chek())
+        self.model.plus(money,op_name,balance)
 
     def ch_balance(self):
         print('\n')
         Menu.balance()
-        self.model.balance()
+        balance = self.model.chek()
+        print(balance)
 
     def wallet(self):
-        print('\n')
         choise = -1
         while choise !=6:
+            print('\n')
             Menu.wallet_menu()
             try:
                 choise=int(input ('Enter menu item:'))
@@ -104,9 +107,9 @@ class Controller():
         self.main()
 
     def main(self):
-        print('\n')
         choise = -1
         while choise !=3:
+            print('\n')
             Menu.base_menu()
             try:
                 choise=int(input ('Enter menu item:'))
