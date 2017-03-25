@@ -111,8 +111,14 @@ class Controller():
         else:
             self.model.wallets()
         global wallet
-        wallet = str(input('Choose the wallet:'))
-        self.wallet()
+        while 1:
+            wallet = str(input('Choose the wallet:'))
+            for i in line:
+                print(i)
+                if i == wallet+'\n':
+                    self.wallet()
+            print('Incorrect name. Please try again')
+
 
     def new_wallet(self):
         print('\n')
