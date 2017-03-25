@@ -3,8 +3,8 @@ from model import Model
 
 class Controller():
 
-    def __init__(self, data_base):
-        self.model = data_base
+    def __init__(self, name):
+        self.model = name
 
     def history(self):
         self.model.history()
