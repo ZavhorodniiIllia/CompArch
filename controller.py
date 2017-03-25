@@ -98,7 +98,13 @@ class Controller():
 
     def ex_wallet(self):
         print('\n' + 'Existing wallets:'+ '\n')
-        self.model.wallets()
+        data_base = open('wallet.txt', 'r')
+        line = data_base.readlines()
+        if len(line) == 0:
+            print('No existing wallets' + '\n')
+            self.main()
+        else:
+            self.model.wallets()
         global wallet
         wallet = str(input('Choose the wallet:'))
         self.wallet()
