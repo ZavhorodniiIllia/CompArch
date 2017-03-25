@@ -1,10 +1,12 @@
 from menu import Menu
 from model import Model
 
+wallet=''
+
 class Controller():
 
-    def __init__(self, name):
-        self.model = name
+    def __init__(self, data_base):
+        self.model = data_base
 
     def minus_money(self):
         print('\n')
@@ -96,6 +98,7 @@ class Controller():
 
     def ex_wallet(self):
         print('\n')
+        self.model.wallets()
         name=str(input('Choose the wallet:'))
         self.wallet()
 

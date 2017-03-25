@@ -4,13 +4,17 @@ class Model:
         self.load(name)
 
     def new_wallet(self, name, balance):
-        file=open('wallet.txt', 'w')
+        file=open(name + '.txt', 'w')
         file.write(name + '\n')
         file.write(balance + ' (UAH)' + '\n')
         file.close()
+        data_base=open('wallet.txt','a')
+        data_base.write(name + '\n')
+        data_base.close()
 
-    def load(self,name):
-        file=open('wallet.txt','r')
+    def wallets(self):
+        data_base = open('wallet.txt', 'r')
+        print(data_base.read())
 
     def balance(self):
         file = open('wallet.txt', 'r')

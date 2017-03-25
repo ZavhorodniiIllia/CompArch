@@ -1,5 +1,5 @@
 from controller import Controller, Model
 
-name = Model('wallet.txt')
-data_controller = Controller(name)
+data_base = Model('wallet.txt')
+data_controller = Controller(data_base)
 data_controller.main()
