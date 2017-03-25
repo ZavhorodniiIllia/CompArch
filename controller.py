@@ -9,7 +9,6 @@ class Controller():
         self.model = data_base
 
     def minus_money(self):
-        print('\n')
         choise = -1
         coof=1
         while choise != 5:
@@ -38,7 +37,6 @@ class Controller():
         self.model.minus(money, op_name,balance,coof,wallet)
 
     def plus_money(self):
-        print('\n')
         choise = -1
         coof=1
         while choise != 5:
@@ -67,7 +65,6 @@ class Controller():
         self.model.plus(money,op_name,balance,coof,wallet)
 
     def ch_balance(self):
-        print('\n')
         Menu.balance()
         balance = self.model.chek(wallet)
         print(balance)
@@ -75,7 +72,6 @@ class Controller():
     def wallet(self):
         choise = -1
         while choise !=6:
-            print('\n')
             Menu.wallet_menu()
             try:
                 choise=int(input ('Enter menu item:'))
@@ -92,7 +88,6 @@ class Controller():
                 self.minus_money()
 
             elif choise == 4:
-                print('\n')
                 self.model.history(wallet)
 
             elif choise == 5:
@@ -102,11 +97,11 @@ class Controller():
         self.wallet()
 
     def ex_wallet(self):
-        print('\n' + 'Existing wallets:'+ '\n')
+        print('Existing wallets: \n')
         data_base = open('wallet.txt', 'r')
         line = data_base.readlines()
         if len(line) == 0:
-            print('No existing wallets' + '\n')
+            print('No existing wallets \n')
             self.main()
         else:
             self.model.wallets()
@@ -115,7 +110,6 @@ class Controller():
         self.wallet()
 
     def new_wallet(self):
-        print('\n')
         name = input('Enter wallet`s name:')
         balance= input('Enter your balance(in UAH):')
         self.model.new_wallet(name,balance)
@@ -124,7 +118,6 @@ class Controller():
     def main(self):
         choise = -1
         while choise !=3:
-            print('\n')
             Menu.base_menu()
             try:
                 choise=int(input ('Enter menu item:'))
@@ -136,7 +129,10 @@ class Controller():
 
             elif choise == 2:
                 self.new_wallet()
+
+            elif choise == 3:
+                exit(0)
             else:
                 print('Incorrect number. Please try again')
+                self.main()
         input('Press Enter')
-        exit(0)

@@ -1,0 +1,8 @@
+Bang
+333 (UAH)
+-111.0 UAH: Op
+222.0 (UAH)
++10.0 USD: ops
+492.0 (UAH)
++900.0 UAH: stip	1392.0 (UAH)
++15.55 UAH: 31	915.55 (UAH)

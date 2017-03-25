@@ -1,4 +1,3 @@
-
 class Model:
     def __init__(self, name):
         self.load(name)
@@ -47,7 +46,7 @@ class Model:
     def plus(self,money,op_name,balance,coof,name):
         file = open(name + '.txt', 'a')
         if coof==1:
-            file.write('+' + str(money) + ' UAH' + ': ' + op_name + '\n')
+            file.write('+' + str(money) + ' UAH' + ': ' + op_name + '\t')
         elif coof==2:
             file.write('+' + str(money)+' USD' +': '+ op_name + '\n')
             money*=27
@@ -59,7 +58,7 @@ class Model:
 
     def history(self,name):
         file = open(name + '.txt', 'r')
-        print(file.read())
+        print('\n' + file.read())
 
     def str_to_float(self,money):
         mon=''
