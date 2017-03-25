@@ -11,6 +11,7 @@ class Controller():
 
     def minus_money(self):
         choise = -1
+        coof=1
         while choise != 4:
             Menu.currency()
             try:
@@ -19,19 +20,20 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-
+                coof=1
             elif choise == 2:
-
+                coof=27
             elif choise == 3:
-
+                coof=29.5
         input('Press Enter')
 
-        money= float(input('Enter amount of money:'))
+        money= coof * float(input('Enter amount of money:'))
         op_name=str(input('Enter name of operation:'))
         self.model.minus(money,op_name)
 
     def plus_money(self):
         choise = -1
+        coof=1
         while choise != 4:
             Menu.currency()
             try:
@@ -40,14 +42,14 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-
+                coof=1
             elif choise == 2:
-
+                coof=27
             elif choise == 3:
-
+                coof=29.5
         input('Press Enter')
 
-        money = float(input('Enter amount of money:'))
+        money = coof * float(input('Enter amount of money:'))
         op_name = str(input('Enter name of operation:'))
         self.model.plus(money,op_name)
 
