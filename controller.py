@@ -1,7 +1,7 @@
 from menu import Menu
 from model import Model
 
-wallet=''
+wallet =''
 
 class Controller():
 
@@ -32,8 +32,8 @@ class Controller():
                 self.wallet()
         money=float(input('Enter amount of money:'))
         op_name= input('Enter name of operation:')
-        balance = float(self.model.str_to_float(self.model.chek()))
-        self.model.minus(money, op_name,balance,coof)
+        balance = float(self.model.str_to_float(self.model.chek(wallet)))
+        self.model.minus(money, op_name,balance,coof,wallet)
 
     def plus_money(self):
         print('\n')
@@ -59,13 +59,13 @@ class Controller():
                 self.wallet()
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
-        balance=float(self.model.str_to_float(self.model.chek()))
-        self.model.plus(money,op_name,balance,coof)
+        balance=float(self.model.str_to_float(self.model.chek(wallet)))
+        self.model.plus(money,op_name,balance,coof,wallet)
 
     def ch_balance(self):
         print('\n')
         Menu.balance()
-        balance = self.model.chek()
+        balance = self.model.chek(wallet)
         print(balance)
 
     def wallet(self):
@@ -89,7 +89,7 @@ class Controller():
 
             elif choise == 4:
                 print('\n')
-                self.model.history()
+                self.model.history(wallet)
 
             elif choise == 5:
                 self.main()
@@ -97,9 +97,10 @@ class Controller():
         input ('Press Enter')
 
     def ex_wallet(self):
-        print('\n')
+        print('\n' + 'Existing wallets:'+ '\n')
         self.model.wallets()
-        name=str(input('Choose the wallet:'))
+        global wallet
+        wallet = str(input('Choose the wallet:'))
         self.wallet()
 
     def new_wallet(self):
