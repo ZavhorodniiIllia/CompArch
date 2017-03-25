@@ -30,6 +30,8 @@ class Controller():
                 break
             elif choise==4:
                 self.wallet()
+            else:
+                print('Incorrect number. Please try again')
         money=float(input('Enter amount of money:'))
         op_name= input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
@@ -57,6 +59,8 @@ class Controller():
                 break
             elif choise == 4:
                 self.wallet()
+            else:
+                print('Incorrect number. Please try again')
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
         balance=float(self.model.str_to_float(self.model.chek(wallet)))
@@ -94,7 +98,8 @@ class Controller():
             elif choise == 5:
                 self.main()
 
-        input ('Press Enter')
+        print ('Incorrect number. Please try again')
+        self.wallet()
 
     def ex_wallet(self):
         print('\n' + 'Existing wallets:'+ '\n')
@@ -131,5 +136,7 @@ class Controller():
 
             elif choise == 2:
                 self.new_wallet()
-
+            else:
+                print('Incorrect number. Please try again')
         input('Press Enter')
+        exit(0)
