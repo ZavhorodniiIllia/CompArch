@@ -4,3 +4,9 @@ illia
 800.0 (UAH)
 -15.0 USD: test
 395.0 (UAH)
++20.0 UAH: data test
+415.0 (UAH)
+-30.0 UAH: data test2 Tuesday, 28. March 2017 09:06AM
+385.0 (UAH)
++30.0 UAH: datatime sets 3 28.03.2017 09:17 AM
+415.0 (UAH)

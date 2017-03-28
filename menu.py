@@ -35,4 +35,4 @@ class Menu:
 
     @staticmethod
     def error(message):
-        print('[ERROR]: ' + message + '\n')
+        print('[ERROR]: ' + message + 'Please try again' + '\n')
