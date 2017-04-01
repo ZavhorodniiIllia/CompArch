@@ -136,9 +136,13 @@ class Controller():
         """Контроллер для создания нового кошелька """
         print('\n')
         name = input('Enter wallet`s name:')
-        balance= input('Enter your balance(in UAH):')
-        self.model.new_wallet(name,balance)
-        self.main()
+        try:
+            balance= int(input('Enter your balance(in UAH):'))
+        except:
+            Menu.error('Wrong input')
+            self.main()
+        self.model.new_wallet(name,str(balance))
+
 
     def main(self):
         """Контроллер для главного меню"""
