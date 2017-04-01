@@ -137,6 +137,12 @@ class Controller():
         print('\n')
         name = input('Enter wallet`s name:')
         try:
+            with open(name + '.txt', 'x') as check:
+                pass
+        except:
+            Menu.error('Wallet with this name already exist')
+            self.main()
+        try:
             balance= int(input('Enter your balance(in UAH):'))
         except:
             Menu.error('Wrong input')
