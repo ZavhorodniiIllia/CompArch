@@ -21,20 +21,20 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-                coof=1
+                coof = 1
                 break
             elif choise == 2:
-                coof=2
+                coof = 2
                 break
             elif choise == 3:
-                coof=3
+                coof = 3
                 break
             elif choise==4:
                 self.wallet()
             else:
                 Menu.error('Incorrect value')
-        money=float(input('Enter amount of money:'))
-        op_name= input('Enter name of operation:')
+        money = float(input('Enter amount of money:'))
+        op_name = input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
         self.model.minus(money, op_name,balance,coof,wallet)
 
@@ -51,13 +51,13 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-                coof=1
+                coof = 1
                 break
             elif choise == 2:
-                coof=2
+                coof = 2
                 break
             elif choise == 3:
-                coof=3
+                coof = 3
                 break
             elif choise == 4:
                 self.wallet()
@@ -65,7 +65,7 @@ class Controller():
                 Menu.error('Incorrect value')
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
-        balance=float(self.model.str_to_float(self.model.chek(wallet)))
+        balance = float(self.model.str_to_float(self.model.chek(wallet)))
         self.model.plus(money,op_name,balance,coof,wallet)
 
     def ch_balance(self):
@@ -107,36 +107,48 @@ class Controller():
 
     def ex_wallet(self):
         """Контроллер для выбора кошелька"""
-        print('\n' + 'Existing wallets:'+ '\n')
-
-        """data_base = open('wallet.txt', 'r')
-        line = data_base.readlines()
-        if len(line) == 0:
-            print('No existing wallets' + '\n')
-            self.main()
-        else:
-            self.model.wallets()
-        global wallet
-        while 1:
-            wallet = str(input('Choose the wallet:'))
-            for i in line:
-                print(i)
-                if i == wallet+'\n':
-                    self.wallet()
-            print('Incorrect name. Please try again')"""
-        self.model.wallets()
-        global wallet
-        wallet=self.model.ch_wal()
-        self.wallet()
+        with open('wallet.txt', 'r') as data_base:
+            choise = -1
+            print('\n' + 'Existing wallets:'+ '\n')
+            count=0
+            lines = data_base.read().splitlines()
+            for line in lines:
+                count+=1
+                print(str(count)+')' + line)
+            print(str(count+1) + ')Back to main menu')
+        while choise != count:
+            try:
+                choise = int(input ('\n Enter menu item:'))
+            except ValueError:\
+                    Menu.error('Incorect value')
+            if choise <= count :
+                global wallet
+                wallet = lines[choise-1]
+                self.wallet()
+            if choise == count+1:
+                self.main()
+            else:
+                Menu.error('No such wallet')
+                self.ex_wallet()
 
 
     def new_wallet(self):
         """Контроллер для создания нового кошелька """
         print('\n')
         name = input('Enter wallet`s name:')
-        balance= input('Enter your balance(in UAH):')
-        self.model.new_wallet(name,balance)
-        self.main()
+        try:
+            with open(name + '.txt', 'x') as check:
+                pass
+        except:
+            Menu.error('Wallet with this name already exist')
+            self.main()
+        try:
+            balance= int(input('Enter your balance(in UAH):'))
+        except:
+            Menu.error('Wrong input')
+            self.main()
+        self.model.new_wallet(name,str(balance))
+
 
     def main(self):
         """Контроллер для главного меню"""
@@ -154,7 +166,8 @@ class Controller():
 
             elif choise == 2:
                 self.new_wallet()
+
+            elif choise == 3:
+                exit(0)
             else:
                 Menu.error('Incorrect value')
-        input('Press Enter')
-        exit(0)
