@@ -7,7 +7,6 @@ class Menu:
         print('2)Create new wallet')
         print('3)Exit')
 
-
     @staticmethod
     def wallet_menu():
         print('Operations with wallet:')
@@ -31,7 +30,7 @@ class Menu:
 
     @staticmethod
     def success(message):
-        print (message + '\n')
+        print(message + '\n')
 
     @staticmethod
     def error(message):
