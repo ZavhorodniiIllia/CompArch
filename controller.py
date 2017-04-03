@@ -1,7 +1,8 @@
 from menu import Menu
 from model import Model
 
-wallet =''
+wallet = ''
+
 
 class Controller():
 
@@ -12,7 +13,7 @@ class Controller():
         """Контроллер для выбора валюты и записи количества денег для снятия и название операции"""
         print('\n')
         choise = -1
-        coof=1
+        coof = 1
         while choise != 5:
             Menu.currency()
             try:
@@ -21,13 +22,13 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-                coof=1
+                coof = 1
                 break
             elif choise == 2:
-                coof=2
+                coof = 2
                 break
             elif choise == 3:
-                coof=3
+                coof = 3
                 break
             elif choise == 4:
                 self.wallet()
@@ -36,7 +37,7 @@ class Controller():
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
-        self.model.minus(money, op_name,balance,coof,wallet)
+        self.model.minus(money, op_name, balance, coof, wallet)
 
     def plus_money(self):
         """Контроллер для выбора валюты и записи количества денег для пополнения и название операции"""
@@ -51,13 +52,13 @@ class Controller():
                 Menu.error('Incorrect value')
 
             if choise == 1:
-                coof=1
+                coof = 1
                 break
             elif choise == 2:
-                coof=2
+                coof = 2
                 break
             elif choise == 3:
-                coof=3
+                coof = 3
                 break
             elif choise == 4:
                 self.wallet()
@@ -66,7 +67,7 @@ class Controller():
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
-        self.model.plus(money,op_name,balance,coof,wallet)
+        self.model.plus(money, op_name, balance, coof, wallet)
 
     def ch_balance(self):
         """Контроллер для проверки баланса"""
@@ -82,7 +83,7 @@ class Controller():
             print('\n')
             Menu.wallet_menu()
             try:
-                choise = int(input ('Enter menu item:'))
+                choise = int(input('Enter menu item:'))
             except ValueError:
                 Menu.error('Incorrect value')
 
@@ -109,7 +110,7 @@ class Controller():
         """Контроллер для удаления кошельков"""
         with open('wallet.txt', 'r') as data_base:
             choise = -1
-            print('\n' + 'Existing wallets:'+ '\n')
+            print('\n' + 'Existing wallets:' + '\n')
             count = 0
             lines = data_base.read().splitlines()
             for line in lines:
@@ -120,7 +121,7 @@ class Controller():
             try:
                 choise = int(input('\n Enter menu item:'))
             except ValueError:
-                    Menu.error('Incorect value')
+                    Menu.error('Incorrect value')
             if choise <= count:
                 name = []
                 name = lines[choise-1]
@@ -136,7 +137,7 @@ class Controller():
         """Контроллер для выбора кошелька"""
         with open('wallet.txt', 'r') as data_base:
             choise = -1
-            print('\n' + 'Existing wallets:'+ '\n')
+            print('\n' + 'Existing wallets:' + '\n')
             count = 0
             lines = data_base.read().splitlines()
             for line in lines:
@@ -145,7 +146,7 @@ class Controller():
             print(str(count+1) + ')Back to main menu')
         while choise != count:
             try:
-                choise = int(input ('\n Enter menu item:'))
+                choise = int(input('\n Enter menu item:'))
             except ValueError:
                     Menu.error('Incorect value')
             if choise <= count:
@@ -173,8 +174,7 @@ class Controller():
         except:
             Menu.error('Wrong input')
             self.main()
-        self.model.new_wallet(name,str(balance))
-
+        self.model.new_wallet(name, str(balance))
 
     def main(self):
         """Контроллер для главного меню"""
@@ -183,7 +183,7 @@ class Controller():
             print('\n')
             Menu.base_menu()
             try:
-                choise = int(input ('Enter menu item:'))
+                choise = int(input('Enter menu item:'))
             except ValueError:
                 Menu.error('Incorrect value')
 

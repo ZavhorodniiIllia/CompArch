@@ -2,11 +2,12 @@ from datetime import date, time
 import datetime
 import os
 
+
 class Model:
     def __init__(self, name):
         self.load(name)
 
-    def load(self,name):
+    def load(self, name):
         file = open('wallet.txt', 'r')
 
     def new_wallet(self, name, balance):
@@ -22,7 +23,7 @@ class Model:
         with open('wallet.txt', 'a') as data_base:
             data_base.write(name + '\n')
 
-    def chek(self,name):
+    def chek(self, name):
         """
         Функция для вывода текущего баланса
         :param name: название кошелька
@@ -34,7 +35,7 @@ class Model:
             lines = len(line)
             return(line[lines-1])
 
-    def minus(self,money,op_name,balance,coof,name):
+    def minus(self, money, op_name, balance, coof, name):
         """
         Функция для записи операции снятия денег и обновления баланса
         :param money: количество денег
@@ -54,10 +55,10 @@ class Model:
             elif coof == 3:
                 file.write('-' + str(money) + ' EUR' + ': ' + op_name + '; operation time: ' + now_time.strftime("%d.%m.%Y %I:%M %p") + '\n')
                 money *= 29.5
-            bm=balance-money
+            bm = balance - money
             file.write(str(bm)+' (UAH)' + '\n')
 
-    def plus(self,money,op_name,balance,coof,name):
+    def plus(self, money, op_name, balance, coof, name):
         """
         Функция для записи операции пополнения денег и обновления баланса
         :param money: количество денег
@@ -77,10 +78,10 @@ class Model:
             elif coof == 3:
                 file.write('+' + str(money) + ' EUR' + ': ' + op_name + '; operation time: ' + now_time.strftime("%d.%m.%Y %I:%M %p") + '\n')
                 money *= 29.5
-            bm=balance+money
+            bm = balance + money
             file.write(str(bm) + ' (UAH)' + '\n')
 
-    def history(self,name):
+    def history(self, name):
         """
         Функция для вывода истории кошелька
         :param name: название кошелька
@@ -89,13 +90,13 @@ class Model:
         with open(name + '.txt', 'r') as file:
             print(file.read())
 
-    def str_to_float(self,money):
+    def str_to_float(self, money):
         """
         Функция для изменения string в float
         :param money: значение типа strinig
         :return: значение типа float
         """
-        mon=''
+        mon = ''
         for i in money:
             if i != ' ':
                 mon += i
