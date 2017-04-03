@@ -5,7 +5,8 @@ class Menu:
         print('Choose your path:')
         print('1)Open existing wallet')
         print('2)Create new wallet')
-        print('3)Exit')
+        print('3)Delete existing wallet')
+        print('4)Exit')
 
     @staticmethod
     def wallet_menu():

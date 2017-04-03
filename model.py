@@ -1,5 +1,6 @@
 from datetime import date, time
 import datetime
+import os
 
 class Model:
     def __init__(self, name):
@@ -9,8 +10,11 @@ class Model:
         file = open('wallet.txt', 'r')
 
     def new_wallet(self, name, balance):
-        """Функция для создания файла для нового кошелька и запись его названия в список кошельков
-            В функцию передается имя нового кошелька и баланс
+        """
+        Функция для создания файла для нового кошелька и запись его названия в список кошельков
+        :param name: название кошелька
+        :param balance: баланс
+        :return: функция ни чего не возвращает
         """
         with open(name + '.txt', 'w') as file:
             file.write(name + '\n')
@@ -19,9 +23,10 @@ class Model:
             data_base.write(name + '\n')
 
     def chek(self,name):
-        """Функция для вывода текущего баланса
-            В функцию передается имя кошелька
-            Функция возвращает строку в которой храниться баланс
+        """
+        Функция для вывода текущего баланса
+        :param name: название кошелька
+        :return: строка в которой хранится баланс
         """
         lines = 0
         with open(name + '.txt', 'r') as file:
@@ -30,8 +35,14 @@ class Model:
             return(line[lines-1])
 
     def minus(self,money,op_name,balance,coof,name):
-        """Функция для записи операции снятия денег и обновления баланса
-            В функцию предается количество денег, название операции, текущий баланс, флаг валюты и имя кошелька
+        """
+        Функция для записи операции снятия денег и обновления баланса
+        :param money: количество денег
+        :param op_name: название операции
+        :param balance: текущий баланс
+        :param coof: флаг валюты
+        :param name: имя кошелька
+        :return: функция ни чего не возвращает
         """
         with open(name + '.txt', 'a') as file:
             now_time = datetime.datetime.now()
@@ -47,8 +58,14 @@ class Model:
             file.write(str(bm)+' (UAH)' + '\n')
 
     def plus(self,money,op_name,balance,coof,name):
-        """Функция для записи операции пополнения денег и обновления баланса
-            В функцию предается количество денег, название операции, текущий баланс, флаг валюты и имя кошелька
+        """
+        Функция для записи операции пополнения денег и обновления баланса
+        :param money: количество денег
+        :param op_name: название операции
+        :param balance: текущий баланс
+        :param coof: флаг валюты
+        :param name: имя кошелька
+        :return: функция ни чего не возвращает
         """
         with open(name + '.txt', 'a') as file:
             now_time = datetime.datetime.now()
@@ -64,17 +81,19 @@ class Model:
             file.write(str(bm) + ' (UAH)' + '\n')
 
     def history(self,name):
-        """Функция для вывода истории кошелька
-            В функцию передается название кошелька
-            Функция аозвращает полную историю операций
+        """
+        Функция для вывода истории кошелька
+        :param name: название кошелька
+        :return: полная история операций
         """
         with open(name + '.txt', 'r') as file:
             print(file.read())
 
     def str_to_float(self,money):
-        """Функция для изменения string в float
-            В функцию передается значение типа strinig
-            Функция возвращает значение типа float
+        """
+        Функция для изменения string в float
+        :param money: значение типа strinig
+        :return: значение типа float
         """
         mon=''
         for i in money:
@@ -83,3 +102,21 @@ class Model:
             else:
                 break
         return mon
+
+    def delete(self, name):
+        """
+        Функция удаляет кошелек и удалает его имя в списке кошельков
+        :param name: название кошелька
+        :return: функция ни чего не возвращает
+        """
+        path = os.path.join(os.path.abspath(os.path.dirname(__file__)), name + '.txt')
+        os.remove(path)
+        rst = []
+        with open('wallet.txt', 'r') as data_base:
+            lines = data_base.read().splitlines()
+            for line in lines:
+                if line != name:
+                    rst.append(line)
+
+        with open('wallet.txt', 'w') as data_base:
+            data_base.write('\n'.join(rst) + '\n')
