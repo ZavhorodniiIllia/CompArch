@@ -9,9 +9,8 @@ class Controller():
     def __init__(self, data_base):
         self.model = data_base
 
-    def minus_money(self):
-        """Контроллер для выбора валюты и записи количества денег для снятия и название операции"""
-        print('\n')
+    def currency(self):
+        """Контроллер для выбора валюты"""
         choise = -1
         coof = 1
         while choise != 5:
@@ -23,47 +22,29 @@ class Controller():
 
             if choise == 1:
                 coof = 1
-                break
+                return coof
             elif choise == 2:
                 coof = 2
-                break
+                return coof
             elif choise == 3:
                 coof = 3
-                break
+                return coof
             elif choise == 4:
                 self.wallet()
             else:
                 Menu.error('Incorrect value')
+
+    def minus_money(self):
+        """Контроллер для записи количества денег для снятия и название операции"""
+        coof = self.currency()
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
         self.model.minus(money, op_name, balance, coof, wallet)
 
     def plus_money(self):
-        """Контроллер для выбора валюты и записи количества денег для пополнения и название операции"""
-        print('\n')
-        choise = -1
-        coof = 1
-        while choise != 5:
-            Menu.currency()
-            try:
-                choise = int(input('Enter menu item:'))
-            except ValueError:
-                Menu.error('Incorrect value')
-
-            if choise == 1:
-                coof = 1
-                break
-            elif choise == 2:
-                coof = 2
-                break
-            elif choise == 3:
-                coof = 3
-                break
-            elif choise == 4:
-                self.wallet()
-            else:
-                Menu.error('Incorrect value')
+        """Контроллер для и записи количества денег для пополнения и название операции"""
+        coof = self.currency()
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
         balance = float(self.model.str_to_float(self.model.chek(wallet)))
@@ -71,7 +52,6 @@ class Controller():
 
     def ch_balance(self):
         """Контроллер для проверки баланса"""
-        print('\n')
         Menu.balance()
         balance = self.model.chek(wallet)
         print(balance)
@@ -80,7 +60,6 @@ class Controller():
         """Контроллер для меню кошелька"""
         choise = -1
         while choise != 6:
-            print('\n')
             Menu.wallet_menu()
             try:
                 choise = int(input('Enter menu item:'))
@@ -108,24 +87,16 @@ class Controller():
 
     def delete(self):
         """Контроллер для удаления кошельков"""
-        with open('wallet.txt', 'r') as data_base:
-            choise = -1
-            print('\n' + 'Existing wallets:' + '\n')
-            count = 0
-            lines = data_base.read().splitlines()
-            for line in lines:
-                count += 1
-                print(str(count)+')' + line)
-            print(str(count+1) + ')Back to main menu')
+        choise = -1
+        Menu.Ex_wallet()
+        count = self.model.wallet()
         while choise != count:
             try:
                 choise = int(input('\n Enter menu item:'))
             except ValueError:
                     Menu.error('Incorrect value')
             if choise <= count:
-                name = []
-                name = lines[choise-1]
-                self.model.delete(name)
+                self.model.wallet_del(choise)
                 self.main()
             if choise == count+1:
                 self.main()
@@ -135,23 +106,17 @@ class Controller():
 
     def ex_wallet(self):
         """Контроллер для выбора кошелька"""
-        with open('wallet.txt', 'r') as data_base:
-            choise = -1
-            print('\n' + 'Existing wallets:' + '\n')
-            count = 0
-            lines = data_base.read().splitlines()
-            for line in lines:
-                count += 1
-                print(str(count)+')' + line)
-            print(str(count+1) + ')Back to main menu')
+        choise = -1
+        Menu.Ex_wallet()
+        count = self.model.wallet()
         while choise != count:
             try:
                 choise = int(input('\n Enter menu item:'))
             except ValueError:
-                    Menu.error('Incorect value')
+                Menu.error('Incorect value')
             if choise <= count:
                 global wallet
-                wallet = lines[choise-1]
+                wallet = self.model.wallet_ch(choise)
                 self.wallet()
             if choise == count+1:
                 self.main()
@@ -180,7 +145,6 @@ class Controller():
         """Контроллер для главного меню"""
         choise = -1
         while choise != 4:
-            print('\n')
             Menu.base_menu()
             try:
                 choise = int(input('Enter menu item:'))

@@ -10,3 +10,5 @@ illia
 385.0 (UAH)
 +30.0 UAH: datatime sets 3 28.03.2017 09:17 AM
 415.0 (UAH)
++2.0 USD: teat; operation time: 07.04.2017 08:37 PM
+469.0 (UAH)

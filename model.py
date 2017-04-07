@@ -121,3 +121,26 @@ class Model:
 
         with open('wallet.txt', 'w') as data_base:
             data_base.write('\n'.join(rst) + '\n')
+
+    def wallet(self):
+        with open('wallet.txt', 'r') as data_base:
+            count = 0
+            lines = data_base.read().splitlines()
+            for line in lines:
+                count += 1
+                print(str(count)+')' + line)
+            print(str(count+1) + ')Back to main menu')
+        return count
+
+    def wallet_ch(self, choise):
+        with open('wallet.txt', 'r') as data_base:
+            lines = data_base.read().splitlines()
+            wallet = lines[choise - 1]
+        return wallet
+
+    def wallet_del(self,choise):
+        with open('wallet.txt', 'r') as data_base:
+                name = []
+                lines = data_base.read().splitlines()
+                name = lines[choise - 1]
+        self.delete(name)

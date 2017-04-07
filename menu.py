@@ -1,6 +1,7 @@
 class Menu:
     @staticmethod
     def base_menu():
+        print('\n')
         print('Program accounting profits and expenses\n--------------')
         print('Choose your path:')
         print('1)Open existing wallet')
@@ -10,6 +11,7 @@ class Menu:
 
     @staticmethod
     def wallet_menu():
+        print('\n')
         print('Operations with wallet:')
         print('1)Check balance')
         print('2)Top up the balance')
@@ -19,15 +21,21 @@ class Menu:
 
     @staticmethod
     def balance():
+        print('\n')
         print('Your balance:')
 
     @staticmethod
     def currency():
+        print('\n')
         print('Choose the currency:')
         print('1)UAH')
         print('2)USD')
         print('3)EUR')
         print('4)Back')
+
+    @staticmethod
+    def Ex_wallet():
+        print('\n' + 'Existing wallets:' + '\n')
 
     @staticmethod
     def success(message):
