@@ -7,10 +7,14 @@ wallet = ''
 class Controller():
 
     def __init__(self, data_base):
+        """
+        Initialize Controller class
+        :param data_base: data base`s name
+        """
         self.model = data_base
 
     def currency(self):
-        """Контроллер для выбора валюты"""
+        """Controller for currency selection"""
         choise = -1
         coof = 1
         while choise != 5:
@@ -35,7 +39,7 @@ class Controller():
                 Menu.error('Incorrect value')
 
     def minus_money(self):
-        """Контроллер для записи количества денег для снятия и название операции"""
+        """Controller for recording the amount of money to be withdrawn and the name of the operation"""
         coof = self.currency()
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
@@ -43,7 +47,7 @@ class Controller():
         self.model.minus(money, op_name, balance, coof, wallet)
 
     def plus_money(self):
-        """Контроллер для и записи количества денег для пополнения и название операции"""
+        """Controller for and recording the amount of money to replenish and the name of the operation"""
         coof = self.currency()
         money = float(input('Enter amount of money:'))
         op_name = input('Enter name of operation:')
@@ -51,13 +55,13 @@ class Controller():
         self.model.plus(money, op_name, balance, coof, wallet)
 
     def ch_balance(self):
-        """Контроллер для проверки баланса"""
+        """Controller for checking balance"""
         Menu.balance()
         balance = self.model.chek(wallet)
         print(balance)
 
     def wallet(self):
-        """Контроллер для меню кошелька"""
+        """Controller for wallet menu"""
         choise = -1
         while choise != 6:
             Menu.wallet_menu()
@@ -86,7 +90,7 @@ class Controller():
         self.wallet()
 
     def delete(self):
-        """Контроллер для удаления кошельков"""
+        """Controller for wallets removal"""
         choise = -1
         Menu.Ex_wallet()
         count = self.model.wallet()
@@ -105,7 +109,7 @@ class Controller():
                 self.ex_wallet()
 
     def ex_wallet(self):
-        """Контроллер для выбора кошелька"""
+        """Controller for choosing a wallet"""
         choise = -1
         Menu.Ex_wallet()
         count = self.model.wallet()
@@ -125,7 +129,7 @@ class Controller():
                 self.ex_wallet()
 
     def new_wallet(self):
-        """Контроллер для создания нового кошелька """
+        """Controller for creating a new wallet"""
         print('\n')
         name = input('Enter wallet`s name:')
         try:
@@ -142,7 +146,7 @@ class Controller():
         self.model.new_wallet(name, str(balance))
 
     def main(self):
-        """Контроллер для главного меню"""
+        """Controller for the main menu"""
         choise = -1
         while choise != 4:
             Menu.base_menu()

@@ -1,0 +1,12 @@
+test
+200 (UAH)
++5.0 USD: testing; operation time: 08.06.2017 03:11 PM
+335.0 (UAH)
+-3.0 USD: testing2; operation time: 08.06.2017 03:11 PM
+254.0 (UAH)
++10.0 EUR: testing3; operation time: 08.06.2017 03:11 PM
+549.0 (UAH)
+-50.0 UAH: tedtinnfg; operation time: 08.06.2017 03:12 PM
+499.0 (UAH)
++200.0 UAH: testing; operation time: 08.06.2017 03:12 PM
+699.0 (UAH)

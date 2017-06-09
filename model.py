@@ -2,20 +2,31 @@ from datetime import date, time
 import datetime
 import os
 
+import self as self
+
 
 class Model:
     def __init__(self, name):
+        """
+            Initialize Model class
+            :param name: wallet`s name
+        """
         self.load(name)
 
     def load(self, name):
+        """
+            Method open file with wallet`s names
+            :param name: wallet`s name
+        """
         file = open('wallet.txt', 'r')
 
     def new_wallet(self, name, balance):
         """
-        Функция для создания файла для нового кошелька и запись его названия в список кошельков
-        :param name: название кошелька
-        :param balance: баланс
-        :return: функция ни чего не возвращает
+            Method to create a file for a new wallet and write it`s name to the purse list
+            :param name: wallet`s name
+            :param balance: balance
+            Example:
+                >>> new_wallet("example", 200)
         """
         with open(name + '.txt', 'w') as file:
             file.write(name + '\n')
@@ -25,9 +36,12 @@ class Model:
 
     def chek(self, name):
         """
-        Функция для вывода текущего баланса
-        :param name: название кошелька
-        :return: строка в которой хранится баланс
+            Method to display the current balance
+            :param name: wallet`s name
+            :return: row with balance
+            Examples:
+                >>> chek("example")
+                200 (UAH)
         """
         lines = 0
         with open(name + '.txt', 'r') as file:
@@ -37,13 +51,14 @@ class Model:
 
     def minus(self, money, op_name, balance, coof, name):
         """
-        Функция для записи операции снятия денег и обновления баланса
-        :param money: количество денег
-        :param op_name: название операции
-        :param balance: текущий баланс
-        :param coof: флаг валюты
-        :param name: имя кошелька
-        :return: функция ни чего не возвращает
+            Method for recording the operation of withdrawing money and updating the balance sheet
+            :param money: amount of money
+            :param op_name: operation`s name
+            :param balance: current balance
+            :param coof: currency`s flag
+            :param name: wallet`s name
+            Examples:
+                >>> minus(50, "test1", 200, 1, example)
         """
         with open(name + '.txt', 'a') as file:
             now_time = datetime.datetime.now()
@@ -60,13 +75,14 @@ class Model:
 
     def plus(self, money, op_name, balance, coof, name):
         """
-        Функция для записи операции пополнения денег и обновления баланса
-        :param money: количество денег
-        :param op_name: название операции
-        :param balance: текущий баланс
-        :param coof: флаг валюты
-        :param name: имя кошелька
-        :return: функция ни чего не возвращает
+            Method for recording the operation of replenishing money and updating the balance
+            :param money: amount of money
+            :param op_name: operation`s name
+            :param balance: current balance
+            :param coof: currency`s flag
+            :param name: wallet`s name
+            Example:
+                >>> minus(50, "test2", 200, 1, example)
         """
         with open(name + '.txt', 'a') as file:
             now_time = datetime.datetime.now()
@@ -83,18 +99,30 @@ class Model:
 
     def history(self, name):
         """
-        Функция для вывода истории кошелька
-        :param name: название кошелька
-        :return: полная история операций
+            Method for displaying the history of the wallet
+            :param name: wallet`s name
+            :return: operation history
+            Example:
+                >>> history("example")
+                example
+                200 (UAH)
+                -50.0 UAH: test1; operation time
+                150.0 (UAH)
+                +50.0 UAH: test2; operation time
+                200.0 (UAH)
+
         """
         with open(name + '.txt', 'r') as file:
             print(file.read())
 
     def str_to_float(self, money):
         """
-        Функция для изменения string в float
-        :param money: значение типа strinig
-        :return: значение типа float
+            Method for changing string to float
+            :param money: string value
+            Example:
+                >>> str_to_float("200")
+                200.0
+
         """
         mon = ''
         for i in money:
@@ -106,9 +134,10 @@ class Model:
 
     def delete(self, name):
         """
-        Функция удаляет кошелек и удалает его имя в списке кошельков
-        :param name: название кошелька
-        :return: функция ни чего не возвращает
+            Method deletes the purse and deletes its name in the purse list
+            :param name: wallet`s name
+            Examples:
+                >>> delete("example")
         """
         path = os.path.join(os.path.abspath(os.path.dirname(__file__)), name + '.txt')
         os.remove(path)
@@ -123,6 +152,13 @@ class Model:
             data_base.write('\n'.join(rst) + '\n')
 
     def wallet(self):
+        """
+            Method displays wallet`s list
+            Exapmle:
+                >>> wallet()
+                1)example
+                2)Back to main menu
+        """
         with open('wallet.txt', 'r') as data_base:
             count = 0
             lines = data_base.read().splitlines()
@@ -133,12 +169,25 @@ class Model:
         return count
 
     def wallet_ch(self, choise):
+        """
+            Method chooses wallet
+            :param choise: wallet`s number
+            :return: wallet`s name
+            Example:
+                >>> wallet_ch(1)
+        """
         with open('wallet.txt', 'r') as data_base:
             lines = data_base.read().splitlines()
             wallet = lines[choise - 1]
         return wallet
 
     def wallet_del(self,choise):
+        """
+            Method delete wallet
+            :param choise: wallet`s number
+            Example:
+                >>> wallet_del(1)
+        """
         with open('wallet.txt', 'r') as data_base:
                 name = []
                 lines = data_base.read().splitlines()
