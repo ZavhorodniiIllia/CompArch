@@ -120,4 +120,4 @@ class View:
 
 	@staticmethod
 	def exit_message():
-		print ("Bye, bye))")
+		print ("Exit")
